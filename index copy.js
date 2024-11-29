@@ -8,53 +8,6 @@ setTimeout(function () {
 }, 3000);
 
 // ------------------------
-// const move02 = document.querySelector('#move02');
-// const popBtn = document.querySelector('.pop-btn');
-// const popMenuList = document.querySelector('.pop-menu');
-// const aboutUl = document.querySelectorAll('.about-right-ul');
-// const aboutLi = document.querySelectorAll('.about-right-ul li');
-
-// window.addEventListener('scroll', function () {
-//   const rect = move02.getBoundingClientRect();
-
-//   // move02가 화면에 들어올 때 버튼을 표시
-//   if (rect.top <= window.innerHeight && rect.bottom < 0) {
-//     popBtn.style.opacity = '1';
-//   } else {
-//     popBtn.style.opacity = '0';
-//   }
-// });
-
-
-// // pop-btn
-// popBtn.addEventListener("click", function (e) {
-//   popMenuList.classList.add('pop_on');
-//   popBtn.addEventListener("click", function (e) {
-//     popMenuList.classList.remove('pop_on');
-//   });
-// });
-
-// // popMenuList.addEventListener("click", function (e) {
-// //   popMenuList.classList.remove('pop_on');
-// //   aboutLi.forEach(function (li) {
-// //     li.classList.remove('about_line');
-// //   });
-// // });
-
-// // popMenuList
-// popMenuList.addEventListener("mouseover", function () {
-//   aboutLi.forEach(function (li) {
-//     li.classList.add('about_line');
-//   });
-// });
-
-// popMenuList.addEventListener("mouseleave", function () {
-//   aboutLi.forEach(function (li) {
-//     li.classList.remove('about_line');
-//   });
-// });
-
-
 const move02 = document.querySelector('#move02');
 const popBtn = document.querySelector('.pop-btn');
 const popMenuList = document.querySelector('.pop-menu');
@@ -72,33 +25,35 @@ window.addEventListener('scroll', function () {
   }
 });
 
-// pop-btn 클릭시 popMenuList 보이기/숨기기
+
+// pop-btn
 popBtn.addEventListener("click", function (e) {
-  e.stopPropagation(); // 클릭 이벤트 전파 막기
-  popMenuList.classList.toggle('pop_on');
-});
-
-// popMenuList 외부를 클릭했을 때 pop_on 클래스를 제거
-document.addEventListener("click", function (e) {
-  if (!popMenuList.contains(e.target) && e.target !== popBtn) {
+  popMenuList.classList.add('pop_on');
+  popBtn.addEventListener("click", function (e) {
     popMenuList.classList.remove('pop_on');
-  }
+  });
 });
 
-// popMenuList에서 마우스 오버시 aboutLi에 스타일 추가
+// popMenuList.addEventListener("click", function (e) {
+//   popMenuList.classList.remove('pop_on');
+//   aboutLi.forEach(function (li) {
+//     li.classList.remove('about_line');
+//   });
+// });
+
+// popMenuList
 popMenuList.addEventListener("mouseover", function () {
   aboutLi.forEach(function (li) {
     li.classList.add('about_line');
   });
 });
 
-// popMenuList에서 마우스 나갈 때 pop_on 클래스를 제거하고 aboutLi에서 스타일 제거
 popMenuList.addEventListener("mouseleave", function () {
-  popMenuList.classList.remove('pop_on'); // pop_on 클래스 제거
   aboutLi.forEach(function (li) {
-    li.classList.remove('about_line'); // aboutLi에서 스타일 제거
+    li.classList.remove('about_line');
   });
 });
+
 
 // about-----
 document.querySelectorAll('.about-right-ul li').forEach(item => {
