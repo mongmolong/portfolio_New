@@ -1,4 +1,4 @@
-setTimeout(function() {
+setTimeout(function () {
   document.getElementById('loading-container').style.display = 'none';
 }, 3000);
 
@@ -30,13 +30,6 @@ popBtn.addEventListener("mouseover", function (e) {
   });
 });
 
-// popMenuList.addEventListener("click", function (e) {
-//   popMenuList.classList.remove('pop_on');
-//   aboutLi.forEach(function (li) {
-//     li.classList.remove('about_line');
-//   });
-// });
-
 // popMenuList
 popMenuList.addEventListener("mouseover", function () {
   aboutLi.forEach(function (li) {
@@ -50,7 +43,11 @@ popMenuList.addEventListener("mouseleave", function () {
   });
 });
 
-
+document.addEventListener("click", function (e) {
+  if (!popMenuList.contains(e.target) && !popBtn.contains(e.target)) {
+    popMenuList.classList.remove('pop_on');
+  }
+});
 
 // about-----
 document.querySelectorAll('.about-right-ul li').forEach(item => {
