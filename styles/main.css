@@ -30,6 +30,31 @@ h1 {
   transition: all 0.3s;
 }
 
+
+
+
+#loading-text {
+  font-size: 24px;
+  color: white;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: block;
+}
+
+/* 전체 화면을 채운 배경을 가진 컨테이너 */
+#loading-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(21, 20, 20, 0.743); /* 배경을 살짝 반투명하게 */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 /* ------------------------------- */
 
 .pages {

@@ -1,3 +1,7 @@
+setTimeout(function() {
+  document.getElementById('loading-container').style.display = 'none';
+}, 3000);
+
 
 // ------------------------
 const move02 = document.querySelector('#move02');
@@ -26,12 +30,12 @@ popBtn.addEventListener("mouseover", function (e) {
   });
 });
 
-popMenuList.addEventListener("click", function (e) {
-  popMenuList.classList.remove('pop_on');
-  aboutLi.forEach(function (li) {
-    li.classList.remove('about_line');
-  });
-});
+// popMenuList.addEventListener("click", function (e) {
+//   popMenuList.classList.remove('pop_on');
+//   aboutLi.forEach(function (li) {
+//     li.classList.remove('about_line');
+//   });
+// });
 
 // popMenuList
 popMenuList.addEventListener("mouseover", function () {
