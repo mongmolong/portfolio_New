@@ -7,6 +7,9 @@
 
   font-family: "Roboto Mono", monospace;
 }
+body.loading {
+  overflow: hidden; /* 로딩 중 스크롤 비활성화 */
+}
 
 html {
   scroll-behavior: smooth;
@@ -45,7 +48,7 @@ h1 {
 
 /* 전체 화면을 채운 배경을 가진 컨테이너 */
 #loading-container {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   right: 0;

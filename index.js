@@ -1,7 +1,11 @@
-setTimeout(function () {
-  document.getElementById('loading-container').style.display = 'none';
-}, 3000);
+document.body.classList.add('loading');
 
+setTimeout(function () {
+  // 3초 후 로딩 화면 숨기기
+  document.getElementById('loading-container').style.display = 'none';
+  // 스크롤 다시 활성화
+  document.body.classList.remove('loading');
+}, 3000);
 
 // ------------------------
 const move02 = document.querySelector('#move02');
