@@ -93,11 +93,18 @@
 
 
   /* pop-btn */
+  .pop-menu {
+    background-color: #050505eb;
+    border-radius: 7px 0 0 0px;
+
+    display: none !important;
+  }
   .pop-btn {
-    /* background-color: #050505eb; */
     margin-left: -35%;
-    /* border-radius: 7px 0 0 2px; */
     border: 1px solid rgba(248, 245, 245, 0.894);
+
+    display: none !important;
+
   }
 
   .pop-menu.pop_on {
@@ -112,10 +119,7 @@
 
   }
 
-  .pop-menu {
-    background-color: #050505eb;
-    border-radius: 7px 0 0 0px;
-  }
+ 
 
   .pop-menu ul li:hover {
     border-left: 1px solid transparent;
