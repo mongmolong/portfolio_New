@@ -7,6 +7,29 @@
     background-color: rgba(0, 0, 0, 0.386);
   }
 
+  /* pop-btn */
+
+  .pop-menu.pop_on {
+    top: 0%;
+  }
+
+  .pop-menu.pop_on .pop-btn {
+    padding: 25px;
+    top: 0%;
+    border-radius: 0;
+  }
+
+  .pop-menu {
+    background-color: #050505eb;
+    border-radius: 7px 0 0 0px;
+  }
+
+  .pop-menu ul li:hover {
+    border-left: 1px solid transparent;
+  }
+
+
+
   /* about */
   .about .about-left-text {
     padding: 5%;
@@ -16,11 +39,13 @@
     font-size: 1em;
   }
 
-  .about .about-right-ul li.about_on p:nth-child(2) {
-    padding-bottom: 15%;
+  .about .about-right-ul li p.about-downText {
+    font-weight: 300;
   }
 
-
+  .about .about-right-ul li p.about-downText span a {
+    padding: 3% 0;
+  }
 }
 
 @media screen and (min-width: 740px) and (max-width : 1120px) {
@@ -33,12 +58,6 @@
   }
 
   /* items */
-  .items-info p {
-    display: grid;
-    flex-direction: column;
-    gap: 0.3em
-  }
-
   .items ul li .items-link .items-info span {
     font-size: 0.9em;
     font-weight: 300;
@@ -53,6 +72,7 @@
 @media screen and (max-width : 739px) {
   h1 {
     font-size: 3em;
+    padding-right: 9%;
   }
 
   .hello {
@@ -70,6 +90,39 @@
     transform: translateY(-50%);
 
   }
+
+
+  /* pop-btn */
+  .pop-btn {
+    /* background-color: #050505eb; */
+    margin-left: -35%;
+    /* border-radius: 7px 0 0 2px; */
+    border: 1px solid rgba(248, 245, 245, 0.894);
+  }
+
+  .pop-menu.pop_on {
+    top: 0%;
+  }
+
+  .pop-menu.pop_on .pop-btn {
+    padding: 25px;
+    top: 0%;
+    border-radius: 0;
+    border-left: 1px solid rgba(248, 245, 245, 0.894);
+
+  }
+
+  .pop-menu {
+    background-color: #050505eb;
+    border-radius: 7px 0 0 0px;
+  }
+
+  .pop-menu ul li:hover {
+    border-left: 1px solid transparent;
+  }
+
+
+
 
   /* about */
   .about {
@@ -91,10 +144,13 @@
   .about .about-right-ul {
     width: 100%;
   }
-
-  .about .about-right-ul li {
-    padding: 7% 5%;
+  .about .about-right-ul li p.about-downText {
     font-weight: 300;
+    font-size: 0.9em;
+  }
+
+  .about .about-right-ul li p.about-downText span a {
+    padding: 3% 0;
   }
 
   /* items */
@@ -125,10 +181,6 @@
     padding-top: 5px;
   }
 
-  .photo_on>p>img {
-    /* animation: none; */
-  }
-
   /* Thankyou */
   .Thankyou-top-text {
     width: 85%;
@@ -139,8 +191,9 @@
     font-size: 1.1em;
   }
 
-  footer p{
+  footer p {
     font-weight: 200;
-    font-size: 1em !important;
+    font-size: 0.2em !important;
+    padding: 5%;
   }
 }

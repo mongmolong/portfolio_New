@@ -10,6 +10,7 @@
 
 html {
   scroll-behavior: smooth;
+  background-color: #050505;
 }
 
 ul {
@@ -34,51 +35,62 @@ h1 {
 .pages {
   width: 100%;
   height: 100vh;
-  background-color: #050505;
   box-sizing: border-box;
+  background-color: var(--back);
 }
 
 .pop-btn {
   cursor: pointer;
   padding: 10px;
-  /* margin-left: -5px; */
-  margin-left: 60%;
+  margin-left: -55%;
   transition: all 0.3s;
   border-left: 1px solid rgba(248, 245, 245, 0.894);
   border-bottom: 1px solid rgba(248, 245, 245, 0.894);
   opacity: 0;
+
+  background-color: #05050574;
+  border-radius: 2px;
 }
 
-.pop-btn:hover {
-  margin-left: -10%;
-  background-color: #05050574;
 
+.pop-btn:hover {
+  background-color: #050505db;
+  border: 1px solid rgba(248, 245, 245, 0.894);
 }
 
 
 .pop-menu {
   height: 100%;
   position: fixed;
-  right: 0;
+  right: -300px;
   top: 25%;
   z-index: 5;
 }
 
 .pop-menu ul {
-  opacity: 0;
-  margin-left: 60%;
+  opacity: 1;
   transition: all 0.3s;
 }
 
+.pop-menu.pop_on {
+  right: -10px;
+  padding: 0 5px;
+}
+
 .pop-menu.pop_on ul {
-  margin-left: 0;
+  right: 0;
   opacity: 1;
 }
 
 .pop-menu.pop_on .pop-btn {
   margin-left: -5px;
-  background-color: #05050574;
+  background-color: #050505b7;
+  border: 1px solid rgba(248, 245, 245, 0.894);
+}
 
+.pop-menu ul li a {
+  display: inline-block;
+  width: 100%;
 }
 
 .pop-menu ul li {
@@ -94,9 +106,8 @@ h1 {
   border-left: 1px solid rgba(248, 245, 245, 0.894);
   border-bottom: 1px solid rgba(248, 245, 245, 0.894);
   transform: translateX(-5px);
-  box-shadow: 5px 5px 18px rgba(156, 152, 152, 0.408);
-
-  background-color: #05050574;
+  /* box-shadow: 5px 5px 18px rgba(156, 152, 152, 0.408); */
+  background-color: #050505a5;
 }
 
 /* section */
@@ -126,6 +137,7 @@ h1 {
 .hello {
   position: relative;
   z-index: -1;
+  background-color: transparent;
 }
 
 .hello::after {
@@ -146,9 +158,8 @@ h1 {
   top: 0;
   left: 0;
   padding: 10%;
-  z-index: 1;
+  z-index: 2;
 }
-
 
 /* title animation------------------- */
 :root {
@@ -156,7 +167,6 @@ h1 {
   --violet: rgb(103, 58, 183);
   --pink: rgb(244, 143, 177);
   --back: #050505;
-
 }
 
 @keyframes background-pan {
@@ -271,9 +281,10 @@ h1 {
   transition: all 0.3s;
 }
 
-.about .about-left-text p{
+.about .about-left-text p {
   padding: 0.2em 0.5em;
 }
+
 .about .about-left-text h4 span {
   font-size: 0.7em;
   font-weight: 200;
@@ -286,10 +297,9 @@ h1 {
   padding: 3% 5%;
 }
 
-
 .about .about-right-ul li {
   box-sizing: border-box;
-  padding: 2%;
+  padding: 2% 4%;
   width: 90%;
   border-bottom: 1px solid var(--pink);
   transition: all 0.3s;
@@ -300,23 +310,28 @@ h1 {
 }
 
 .about .about-right-ul li:hover {
-  box-shadow: 15px 15px 10px pink;
+  box-shadow: 10px 10px 10px var(--pink);
   border-bottom: 1px solid transparent;
-  margin-left: -13px;
+  margin-left: -3px;
   transform: translateX(-3px);
+}
+.about .about-right-ul li:hover p span.about-icons {
+  color: var(--pink);
 }
 
 .about .about-right-ul li p {
   padding: 2% 0;
 }
-
 .about .about-right-ul li p:nth-child(1) {
   cursor: pointer;
+  margin: 3% 0;
+}
+.about .about-right-ul li p:nth-child(1) span:nth-child(2) {
+  padding-left: 5%;
 }
 
 .about .about-right-ul li p:nth-child(2) {
   opacity: 0;
-  transition: all 0.2s;
   height: 0;
   width: 0;
   padding: 0;
@@ -324,23 +339,26 @@ h1 {
 
 .about .about-right-ul li.about_on p:nth-child(2) {
   opacity: 1;
-  padding: 5% 1%;
-  padding-bottom: 9%;
   width: 100%;
+  height: auto;
+  margin-bottom: 5%;
+
 }
 
 .about .about-right-ul li p span {
-  display: inline-block;
   transition: all 0.3s;
 }
 
-.about .about-right-ul li:hover p span {
-  color: var(--pink);
-  margin-right: 1%;
+
+
+.about .about-right-ul li p.about-downText span a {
+  display: inline-block;
+  padding: 1% 0;
+  width: 100%;
 }
 
-.about .about-right-ul li p span:nth-child(2) {
-  padding-left: 5%;
+.about .about-right-ul li p.about-downText span a:hover>span {
+  color: var(--pink);
 }
 
 
@@ -351,22 +369,24 @@ h1 {
 
   position: relative;
   overflow: hidden;
-
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
   transition: all 0.3s;
 }
 
-.items ul {
-  width: 600%;
+.items-wrapper {
+  /* width: 600%; */
   display: flex;
   transition: transform 0.3s ease;
 }
 
-.items ul li {
-  width: 100%;
+.items-wrapper li {
+  width: 100vw;
   box-sizing: border-box;
   padding: 20px 0;
   display: flex;
 }
+
 
 /* items-link */
 .items ul li .items-link {
@@ -375,7 +395,7 @@ h1 {
 }
 
 .items ul li .items-link p {
-  padding: 0.2em 0.5em;
+  padding: 0.5em;
 }
 
 .items ul li .items-link p a {
@@ -385,17 +405,16 @@ h1 {
 }
 
 .items ul li .items-link p a:hover {
-  margin-left: 5px;
+  margin-left: 10px;
   width: 100%;
 }
 
 .items ul li .items-link .items-info {
   width: 100%;
-
-  padding: 5% 0;
+  padding-bottom: 5%;
   display: grid;
   flex-direction: column;
-  gap: 0.3em;
+  /* gap: 0.9em; */
 }
 
 .items ul li .items-link .items-info span {
@@ -403,9 +422,6 @@ h1 {
   transition: all 0.3s;
 }
 
-.items ul li .items-link .items-info span:hover {
-  /* background-color: rgba(127, 255, 212, 0.559); */
-}
 
 /* items-right-photo */
 .items-right-photo {
@@ -505,7 +521,7 @@ h1 {
 
 /* footer */
 footer {
-  padding: 3%;
+  padding: 5%;
   text-align: center;
   background-color: #050505;
   user-select: none;
