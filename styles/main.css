@@ -7,8 +7,10 @@
 
   font-family: "Roboto Mono", monospace;
 }
+
 body.loading {
-  overflow: hidden; /* 로딩 중 스크롤 비활성화 */
+  overflow: hidden;
+  /* 로딩 중 스크롤 비활성화 */
 }
 
 html {
@@ -28,11 +30,8 @@ h1 {
   font-size: 5em;
   margin-bottom: 20px;
   font-weight: 400;
-  /* padding: 0 2%; */
-
   transition: all 0.3s;
 }
-
 
 
 
@@ -46,18 +45,18 @@ h1 {
   display: block;
 }
 
-/* 전체 화면을 채운 배경을 가진 컨테이너 */
 #loading-container {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(21, 20, 20, 0.743); /* 배경을 살짝 반투명하게 */
+  background-color: rgba(21, 20, 20, 0.743);
   display: flex;
   justify-content: center;
   align-items: center;
 }
+
 /* ------------------------------- */
 
 .pages {
@@ -72,18 +71,16 @@ h1 {
   padding: 10px;
   margin-left: -55%;
   transition: all 0.3s;
-  border-left: 1px solid rgba(248, 245, 245, 0.894);
-  border-bottom: 1px solid rgba(248, 245, 245, 0.894);
+  border: 5px solid rgba(248, 245, 245, 0.894);
   opacity: 0;
 
   background-color: #05050574;
   border-radius: 2px;
 }
 
-
 .pop-btn:hover {
   background-color: #050505db;
-  border: 1px solid rgba(248, 245, 245, 0.894);
+  border: 5px solid rgba(248, 245, 245, 0.894);
 }
 
 
@@ -91,7 +88,8 @@ h1 {
   height: 100%;
   position: fixed;
   right: -300px;
-  top: 25%;
+  /* top: 25%; */
+  top: 5%;
   z-index: 5;
 }
 
@@ -113,7 +111,7 @@ h1 {
 .pop-menu.pop_on .pop-btn {
   margin-left: -5px;
   background-color: #050505b7;
-  border: 1px solid rgba(248, 245, 245, 0.894);
+  border: 5px solid rgb(248, 245, 245);
 }
 
 .pop-menu ul li a {
@@ -134,7 +132,6 @@ h1 {
   border-left: 1px solid rgba(248, 245, 245, 0.894);
   border-bottom: 1px solid rgba(248, 245, 245, 0.894);
   transform: translateX(-5px);
-  /* box-shadow: 5px 5px 18px rgba(156, 152, 152, 0.408); */
   background-color: #050505a5;
 }
 
@@ -166,6 +163,7 @@ h1 {
   position: relative;
   z-index: -1;
   background-color: transparent;
+  overflow: hidden;
 }
 
 .hello::after {
@@ -232,8 +230,6 @@ h1 {
 .hello h1 {
   font-size: 5.5em;
   font-weight: 400;
-  padding: 5%;
-  padding-top: 0;
   transition: all 0.3s;
 }
 
@@ -244,7 +240,6 @@ h1 {
 
 .hello h1>.magic>.magic-star {
   --size: clamp(20px, 1.5vw, 30px);
-
   animation: scale 700ms ease forwards;
   display: block;
   height: var(--size);
@@ -277,6 +272,38 @@ h1 {
   white-space: nowrap;
 }
 
+#hello-right-text {
+  width: 100%;
+  height: 30%;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  padding: 2rem 0;
+  padding-bottom: 2rem;
+  overflow: hidden;
+}
+
+#hello-right-text h1 {
+  font-size: 12em;
+  font-weight: bold;
+  width: 320%;
+  white-space: nowrap;
+  animation: helloText 50s linear infinite;
+}
+
+@keyframes helloText {
+  0% {
+    transform: translateX(5%);
+  }
+
+  50% {
+    transform: translateX(-100%);
+  }
+
+  100% {
+    transform: translateX(5%);
+  }
+}
 
 /* about------------- */
 .about {
@@ -290,7 +317,6 @@ h1 {
   padding: 5% 7%;
   height: 295px;
   width: 30%;
-  /* background-color: rgba(226, 147, 44, 0.312); */
   position: sticky;
   top: 0;
   left: 0;
@@ -331,6 +357,8 @@ h1 {
   width: 90%;
   border-bottom: 1px solid var(--pink);
   transition: all 0.3s;
+  cursor: pointer;
+  position: relative;
 }
 
 .about .about-right-ul li.about_line {
@@ -338,11 +366,43 @@ h1 {
 }
 
 .about .about-right-ul li:hover {
-  box-shadow: 10px 10px 10px var(--pink);
   border-bottom: 1px solid transparent;
-  margin-left: -3px;
   transform: translateX(-3px);
 }
+
+.about .about-right-ul li:hover::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  border-radius: 2px;
+  z-index: -2;
+
+  border-bottom: 5px solid var(--violet);
+
+  animation: move-border 3s infinite linear;
+}
+
+@keyframes move-border {
+  0% {
+    border-bottom: 5px solid var(--violet);
+  }
+
+  33% {
+    border-bottom: 5px solid var(--pink);
+  }
+
+  66% {
+    border-bottom: 5px solid var(--purple);
+  }
+
+  100% {
+    border-bottom: 5px solid var(--violet);
+  }
+}
+
 .about .about-right-ul li:hover p span.about-icons {
   color: var(--pink);
 }
@@ -350,10 +410,12 @@ h1 {
 .about .about-right-ul li p {
   padding: 2% 0;
 }
+
 .about .about-right-ul li p:nth-child(1) {
   cursor: pointer;
   margin: 3% 0;
 }
+
 .about .about-right-ul li p:nth-child(1) span:nth-child(2) {
   padding-left: 5%;
 }
@@ -415,7 +477,6 @@ h1 {
   display: flex;
 }
 
-
 /* items-link */
 .items ul li .items-link {
   width: 30%;
@@ -450,7 +511,6 @@ h1 {
   transition: all 0.3s;
 }
 
-
 /* items-right-photo */
 .items-right-photo {
   width: 70%;
@@ -463,22 +523,37 @@ h1 {
   width: 100%;
   height: 85vh;
   overflow: hidden;
-  /* padding: 2% 5%; */
   margin: auto;
   border-radius: 5px;
 }
 
 .items-right-photo p img {
   width: 100%;
+
+  opacity: 0;
+  transition: all 0.5s;
 }
 
-.photo_on>p>img {
+
+.items-right-photo p img.item-show {
+  opacity: 1;
+  transition: opacity 0.8s ease-in-out;
   animation: photoUp 13s ease;
 }
 
 @keyframes photoUp {
   to {
     transform: translateY(-71%);
+  }
+}
+
+.item-marvel p img.item-show {
+  animation: photoLeft 13s ease !important;
+}
+
+@keyframes photoLeft {
+  to {
+    transform: scale(1);
   }
 }
 
@@ -515,6 +590,74 @@ h1 {
   transition: all 0.3s;
 }
 
+.Thankyou-container {
+  opacity: 0;
+  transition: opacity 1s ease, transform 1s ease;
+}
+
+.Thankyou-container.Thankyou_active {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.Thankyou-container span {
+  display: inline-block;
+  opacity: 0;
+  transform: translateX(100%);
+  animation: showText 4s ease forwards, changeColor 4s ease infinite;
+}
+
+.Thankyou-container span:nth-child(1) {
+  animation-delay: 0.5s;
+}
+
+.Thankyou-container span:nth-child(2) {
+  animation-delay: 1.5s;
+}
+
+.Thankyou-container span:nth-child(3) {
+  animation-delay: 2.5s;
+}
+
+.Thankyou-container span:nth-child(4) {
+  animation-delay: 3.5s;
+}
+
+@keyframes showText {
+  0% {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+
+  50% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes changeColor {
+  0% {
+    color: var(--violet);
+  }
+
+  33% {
+    color: var(--pink);
+  }
+
+  66% {
+    color: var(--purple);
+  }
+
+  100% {
+    color: var(--violet);
+  }
+}
+
 /* random cube------------ */
 .random-images-container {
   position: absolute;
@@ -549,7 +692,7 @@ h1 {
 
 /* footer */
 footer {
-  padding: 5%;
+  padding: 2%;
   text-align: center;
   background-color: #050505;
   user-select: none;

@@ -1,59 +1,11 @@
-document.body.classList.add('loading');
+// document.body.classList.add('loading');
 
-setTimeout(function () {
-  // 3초 후 로딩 화면 숨기기
-  document.getElementById('loading-container').style.display = 'none';
-  // 스크롤 다시 활성화
-  document.body.classList.remove('loading');
-}, 3000);
+// setTimeout(function () {
+//   document.getElementById('loading-container').style.display = 'none';
+//   document.body.classList.remove('loading');
+// }, 3000);
 
 // ------------------------
-// const move02 = document.querySelector('#move02');
-// const popBtn = document.querySelector('.pop-btn');
-// const popMenuList = document.querySelector('.pop-menu');
-// const aboutUl = document.querySelectorAll('.about-right-ul');
-// const aboutLi = document.querySelectorAll('.about-right-ul li');
-
-// window.addEventListener('scroll', function () {
-//   const rect = move02.getBoundingClientRect();
-
-//   // move02가 화면에 들어올 때 버튼을 표시
-//   if (rect.top <= window.innerHeight && rect.bottom < 0) {
-//     popBtn.style.opacity = '1';
-//   } else {
-//     popBtn.style.opacity = '0';
-//   }
-// });
-
-
-// // pop-btn
-// popBtn.addEventListener("click", function (e) {
-//   popMenuList.classList.add('pop_on');
-//   popBtn.addEventListener("click", function (e) {
-//     popMenuList.classList.remove('pop_on');
-//   });
-// });
-
-// // popMenuList.addEventListener("click", function (e) {
-// //   popMenuList.classList.remove('pop_on');
-// //   aboutLi.forEach(function (li) {
-// //     li.classList.remove('about_line');
-// //   });
-// // });
-
-// // popMenuList
-// popMenuList.addEventListener("mouseover", function () {
-//   aboutLi.forEach(function (li) {
-//     li.classList.add('about_line');
-//   });
-// });
-
-// popMenuList.addEventListener("mouseleave", function () {
-//   aboutLi.forEach(function (li) {
-//     li.classList.remove('about_line');
-//   });
-// });
-
 
 const move02 = document.querySelector('#move02');
 const popBtn = document.querySelector('.pop-btn');
@@ -144,12 +96,31 @@ window.addEventListener('load', () => {
   }
 });
 
+// Intersection Observer 설정
+const observer = new IntersectionObserver((entries, observer) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('show');
+      entry.target.classList.add('Thankyou_active');
+    }
+    else {
+      entry.target.classList.remove('show');
+      entry.target.classList.remove('Thankyou_active');
+    }
+  });
+}, {
+  threshold: 0.5
+});
+
+const target = document.querySelector('.Thankyou-container');
+observer.observe(target);
 
 // -마우스휠-------------------
 document.addEventListener("DOMContentLoaded", function () {
   const items = document.querySelector(".items");
   const itemsWrapper = document.querySelector(".items-wrapper");
   const itemsLi = document.querySelectorAll(".items-wrapper li");
+  const images = document.querySelectorAll(".items-wrapper li .items-right-photo p img");
 
   let isHorizontalScrollEnabled = false;
   let chk = true;
@@ -167,7 +138,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // 각 li 
     itemsLi.forEach(li => {
-      li.style.width = `${window.innerWidth}px`; // 각 li는 화면 너비에 맞춰서 설정
+      li.style.width = `${window.innerWidth}px`;
       li.style.height = '100vh';
       li.style.display = 'flex';
     });
@@ -179,7 +150,33 @@ document.addEventListener("DOMContentLoaded", function () {
 
   let array = Array.from(itemsLi).map(li => li.offsetLeft);
 
-  //영역 90%
+  // Intersection Observer 설정 (li 요소를 옵저빙하도록 변경)
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        // 뷰포트에 보이면 opacity 1로 설정
+        entry.target.querySelectorAll('img').forEach(img => {
+          img.classList.add('item-show');
+          img.closest('.items-right-photo').classList.add('photo_on');
+        });
+      } else {
+        // 뷰포트에서 벗어나면 opacity 0으로 설정
+        entry.target.querySelectorAll('img').forEach(img => {
+          img.classList.remove('item-show');
+          img.closest('.items-right-photo').classList.remove('photo_on');
+        });
+      }
+    });
+  }, {
+    threshold: 0.3 // li 요소가 30% 이상 보일 때 트리거
+  });
+
+  // li 요소에 대해 observer 적용 (각 li의 자식 img도 확인)
+  itemsLi.forEach(li => {
+    observer.observe(li);
+  });
+
+  // 영역 90% 체크
   window.addEventListener('scroll', function () {
     const scrollTop = window.scrollY;
     const itemsTop = items.getBoundingClientRect().top + scrollTop;
@@ -217,6 +214,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
   window.addEventListener('resize', function () {
     array = Array.from(itemsLi).map(li => li.offsetLeft);
-    tmp(); // 화면 크기 변경에 맞춰
+    tmp();
   });
 });
